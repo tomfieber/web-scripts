@@ -10,8 +10,9 @@ import websockets
 import asyncio
 
 async def send_message():
-    async with websockets.connect('ws://ptl-33ef39d2-5e9494c7.libcurl.so/pentesterlab') as ws:
-        message = 'key'
+    location = input("Please enter the address of the websocket: ")
+    async with websockets.connect(location) as ws:
+        message = input("What message do you want to send? ")
         await ws.send(message)
         response = await ws.recv()
         print(f"{response}")
